@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B7992B175A86740029969B /* CoreLocation.framework */; };
+		50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B7992E175A8F260029969B /* jmeMapAnnotation.m */; };
+		50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
+		50C66A50175A8301009F817D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4F175A8301009F817D /* Foundation.framework */; };
+		50C66A52175A8301009F817D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A51175A8301009F817D /* CoreGraphics.framework */; };
+		50C66A58175A8301009F817D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A56175A8301009F817D /* InfoPlist.strings */; };
+		50C66A5A175A8301009F817D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A59175A8301009F817D /* main.m */; };
+		50C66A5E175A8301009F817D /* jmeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A5D175A8301009F817D /* jmeAppDelegate.m */; };
+		50C66A60175A8301009F817D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A5F175A8301009F817D /* Default.png */; };
+		50C66A62175A8301009F817D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A61175A8301009F817D /* Default@2x.png */; };
+		50C66A64175A8301009F817D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A63175A8301009F817D /* Default-568h@2x.png */; };
+		50C66A67175A8301009F817D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A65175A8301009F817D /* MainStoryboard.storyboard */; };
+		50C66A6A175A8301009F817D /* jmeMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A69175A8301009F817D /* jmeMapVC.m */; };
+		50C66A6C175A8301009F817D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A6B175A8301009F817D /* first.png */; };
+		50C66A6E175A8301009F817D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A6D175A8301009F817D /* first@2x.png */; };
+		50C66A71175A8301009F817D /* jmeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A70175A8301009F817D /* jmeSecondViewController.m */; };
+		50C66A73175A8301009F817D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A72175A8301009F817D /* second.png */; };
+		50C66A75175A8301009F817D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A74175A8301009F817D /* second@2x.png */; };
+		50C66A7D175A8302009F817D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A7C175A8302009F817D /* SenTestingKit.framework */; };
+		50C66A7E175A8302009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
+		50C66A7F175A8302009F817D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4F175A8301009F817D /* Foundation.framework */; };
+		50C66A87175A8302009F817D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A85175A8302009F817D /* InfoPlist.strings */; };
+		50C66A8A175A8302009F817D /* JobsNearMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A89175A8302009F817D /* JobsNearMeTests.m */; };
+		50C66A94175A842B009F817D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A93175A842B009F817D /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50C66A80175A8302009F817D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C66A42175A8301009F817D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50C66A49175A8301009F817D;
+			remoteInfo = JobsNearMe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		50B7992B175A86740029969B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		50B7992D175A8F260029969B /* jmeMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeMapAnnotation.h; path = View/jmeMapAnnotation.h; sourceTree = "<group>"; };
+		50B7992E175A8F260029969B /* jmeMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeMapAnnotation.m; path = View/jmeMapAnnotation.m; sourceTree = "<group>"; };
+		50C66A4A175A8301009F817D /* JobsNearMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobsNearMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C66A4D175A8301009F817D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		50C66A4F175A8301009F817D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		50C66A51175A8301009F817D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		50C66A55175A8301009F817D /* JobsNearMe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JobsNearMe-Info.plist"; sourceTree = "<group>"; };
+		50C66A57175A8301009F817D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50C66A59175A8301009F817D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		50C66A5B175A8301009F817D /* JobsNearMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JobsNearMe-Prefix.pch"; sourceTree = "<group>"; };
+		50C66A5C175A8301009F817D /* jmeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jmeAppDelegate.h; sourceTree = "<group>"; };
+		50C66A5D175A8301009F817D /* jmeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jmeAppDelegate.m; sourceTree = "<group>"; };
+		50C66A5F175A8301009F817D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		50C66A61175A8301009F817D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		50C66A63175A8301009F817D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		50C66A66175A8301009F817D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		50C66A68175A8301009F817D /* jmeMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jmeMapVC.h; sourceTree = "<group>"; };
+		50C66A69175A8301009F817D /* jmeMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jmeMapVC.m; sourceTree = "<group>"; };
+		50C66A6B175A8301009F817D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		50C66A6D175A8301009F817D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		50C66A6F175A8301009F817D /* jmeSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jmeSecondViewController.h; sourceTree = "<group>"; };
+		50C66A70175A8301009F817D /* jmeSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jmeSecondViewController.m; sourceTree = "<group>"; };
+		50C66A72175A8301009F817D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		50C66A74175A8301009F817D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		50C66A7B175A8302009F817D /* JobsNearMeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobsNearMeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C66A7C175A8302009F817D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		50C66A84175A8302009F817D /* JobsNearMeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JobsNearMeTests-Info.plist"; sourceTree = "<group>"; };
+		50C66A86175A8302009F817D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50C66A88175A8302009F817D /* JobsNearMeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobsNearMeTests.h; sourceTree = "<group>"; };
+		50C66A89175A8302009F817D /* JobsNearMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobsNearMeTests.m; sourceTree = "<group>"; };
+		50C66A93175A842B009F817D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50C66A47175A8301009F817D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */,
+				50C66A94175A842B009F817D /* MapKit.framework in Frameworks */,
+				50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */,
+				50C66A50175A8301009F817D /* Foundation.framework in Frameworks */,
+				50C66A52175A8301009F817D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C66A77175A8302009F817D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C66A7D175A8302009F817D /* SenTestingKit.framework in Frameworks */,
+				50C66A7E175A8302009F817D /* UIKit.framework in Frameworks */,
+				50C66A7F175A8302009F817D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50B79928175A857D0029969B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A68175A8301009F817D /* jmeMapVC.h */,
+				50C66A69175A8301009F817D /* jmeMapVC.m */,
+				50C66A6F175A8301009F817D /* jmeSecondViewController.h */,
+				50C66A70175A8301009F817D /* jmeSecondViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		50B79929175A85830029969B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		50B7992A175A85880029969B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50B7992D175A8F260029969B /* jmeMapAnnotation.h */,
+				50B7992E175A8F260029969B /* jmeMapAnnotation.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		50C66A41175A8301009F817D = {
+			isa = PBXGroup;
+			children = (
+				50B7992B175A86740029969B /* CoreLocation.framework */,
+				50C66A93175A842B009F817D /* MapKit.framework */,
+				50C66A53175A8301009F817D /* JobsNearMe */,
+				50C66A82175A8302009F817D /* JobsNearMeTests */,
+				50C66A4C175A8301009F817D /* Frameworks */,
+				50C66A4B175A8301009F817D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50C66A4B175A8301009F817D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A4A175A8301009F817D /* JobsNearMe.app */,
+				50C66A7B175A8302009F817D /* JobsNearMeTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50C66A4C175A8301009F817D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A4D175A8301009F817D /* UIKit.framework */,
+				50C66A4F175A8301009F817D /* Foundation.framework */,
+				50C66A51175A8301009F817D /* CoreGraphics.framework */,
+				50C66A7C175A8302009F817D /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50C66A53175A8301009F817D /* JobsNearMe */ = {
+			isa = PBXGroup;
+			children = (
+				50B7992A175A85880029969B /* View */,
+				50B79929175A85830029969B /* Model */,
+				50B79928175A857D0029969B /* Controllers */,
+				50C66A5C175A8301009F817D /* jmeAppDelegate.h */,
+				50C66A5D175A8301009F817D /* jmeAppDelegate.m */,
+				50C66A65175A8301009F817D /* MainStoryboard.storyboard */,
+				50C66A6B175A8301009F817D /* first.png */,
+				50C66A6D175A8301009F817D /* first@2x.png */,
+				50C66A72175A8301009F817D /* second.png */,
+				50C66A74175A8301009F817D /* second@2x.png */,
+				50C66A54175A8301009F817D /* Supporting Files */,
+			);
+			path = JobsNearMe;
+			sourceTree = "<group>";
+		};
+		50C66A54175A8301009F817D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A55175A8301009F817D /* JobsNearMe-Info.plist */,
+				50C66A56175A8301009F817D /* InfoPlist.strings */,
+				50C66A59175A8301009F817D /* main.m */,
+				50C66A5B175A8301009F817D /* JobsNearMe-Prefix.pch */,
+				50C66A5F175A8301009F817D /* Default.png */,
+				50C66A61175A8301009F817D /* Default@2x.png */,
+				50C66A63175A8301009F817D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50C66A82175A8302009F817D /* JobsNearMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A88175A8302009F817D /* JobsNearMeTests.h */,
+				50C66A89175A8302009F817D /* JobsNearMeTests.m */,
+				50C66A83175A8302009F817D /* Supporting Files */,
+			);
+			path = JobsNearMeTests;
+			sourceTree = "<group>";
+		};
+		50C66A83175A8302009F817D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50C66A84175A8302009F817D /* JobsNearMeTests-Info.plist */,
+				50C66A85175A8302009F817D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50C66A49175A8301009F817D /* JobsNearMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C66A8D175A8302009F817D /* Build configuration list for PBXNativeTarget "JobsNearMe" */;
+			buildPhases = (
+				50C66A46175A8301009F817D /* Sources */,
+				50C66A47175A8301009F817D /* Frameworks */,
+				50C66A48175A8301009F817D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JobsNearMe;
+			productName = JobsNearMe;
+			productReference = 50C66A4A175A8301009F817D /* JobsNearMe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50C66A7A175A8302009F817D /* JobsNearMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C66A90175A8302009F817D /* Build configuration list for PBXNativeTarget "JobsNearMeTests" */;
+			buildPhases = (
+				50C66A76175A8302009F817D /* Sources */,
+				50C66A77175A8302009F817D /* Frameworks */,
+				50C66A78175A8302009F817D /* Resources */,
+				50C66A79175A8302009F817D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50C66A81175A8302009F817D /* PBXTargetDependency */,
+			);
+			name = JobsNearMeTests;
+			productName = JobsNearMeTests;
+			productReference = 50C66A7B175A8302009F817D /* JobsNearMeTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50C66A42175A8301009F817D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = jme;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = mCab;
+			};
+			buildConfigurationList = 50C66A45175A8301009F817D /* Build configuration list for PBXProject "JobsNearMe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 50C66A41175A8301009F817D;
+			productRefGroup = 50C66A4B175A8301009F817D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50C66A49175A8301009F817D /* JobsNearMe */,
+				50C66A7A175A8302009F817D /* JobsNearMeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50C66A48175A8301009F817D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C66A58175A8301009F817D /* InfoPlist.strings in Resources */,
+				50C66A60175A8301009F817D /* Default.png in Resources */,
+				50C66A62175A8301009F817D /* Default@2x.png in Resources */,
+				50C66A64175A8301009F817D /* Default-568h@2x.png in Resources */,
+				50C66A67175A8301009F817D /* MainStoryboard.storyboard in Resources */,
+				50C66A6C175A8301009F817D /* first.png in Resources */,
+				50C66A6E175A8301009F817D /* first@2x.png in Resources */,
+				50C66A73175A8301009F817D /* second.png in Resources */,
+				50C66A75175A8301009F817D /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C66A78175A8302009F817D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C66A87175A8302009F817D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50C66A79175A8302009F817D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50C66A46175A8301009F817D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C66A5A175A8301009F817D /* main.m in Sources */,
+				50C66A5E175A8301009F817D /* jmeAppDelegate.m in Sources */,
+				50C66A6A175A8301009F817D /* jmeMapVC.m in Sources */,
+				50C66A71175A8301009F817D /* jmeSecondViewController.m in Sources */,
+				50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C66A76175A8302009F817D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C66A8A175A8302009F817D /* JobsNearMeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50C66A81175A8302009F817D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50C66A49175A8301009F817D /* JobsNearMe */;
+			targetProxy = 50C66A80175A8302009F817D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50C66A56175A8301009F817D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C66A57175A8301009F817D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		50C66A65175A8301009F817D /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C66A66175A8301009F817D /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		50C66A85175A8302009F817D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50C66A86175A8302009F817D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50C66A8B175A8302009F817D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		50C66A8C175A8302009F817D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		50C66A8E175A8302009F817D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JobsNearMe/JobsNearMe-Prefix.pch";
+				INFOPLIST_FILE = "JobsNearMe/JobsNearMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		50C66A8F175A8302009F817D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JobsNearMe/JobsNearMe-Prefix.pch";
+				INFOPLIST_FILE = "JobsNearMe/JobsNearMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		50C66A91175A8302009F817D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JobsNearMe.app/JobsNearMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JobsNearMe/JobsNearMe-Prefix.pch";
+				INFOPLIST_FILE = "JobsNearMeTests/JobsNearMeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		50C66A92175A8302009F817D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JobsNearMe.app/JobsNearMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JobsNearMe/JobsNearMe-Prefix.pch";
+				INFOPLIST_FILE = "JobsNearMeTests/JobsNearMeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50C66A45175A8301009F817D /* Build configuration list for PBXProject "JobsNearMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C66A8B175A8302009F817D /* Debug */,
+				50C66A8C175A8302009F817D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C66A8D175A8302009F817D /* Build configuration list for PBXNativeTarget "JobsNearMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C66A8E175A8302009F817D /* Debug */,
+				50C66A8F175A8302009F817D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C66A90175A8302009F817D /* Build configuration list for PBXNativeTarget "JobsNearMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C66A91175A8302009F817D /* Debug */,
+				50C66A92175A8302009F817D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50C66A42175A8301009F817D /* Project object */;
+}
