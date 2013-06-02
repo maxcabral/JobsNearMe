@@ -3,8 +3,6 @@ package Hack4LA::Controller::Jobs;
 use Moose;
 use namespace::autoclean;
 
-use Hack4LA::Util::Api;
-
 BEGIN { extends 'Catalyst::Controller::REST'; }
 
 
@@ -41,14 +39,63 @@ sub create : Local{
 }
 
 sub job_list : Path('/jobs/job_list') : Args(0) : ActionClass('REST') {}
+sub job_location : Path('/jobs/job_location') : Args(0) : ActionClass('REST') {
+	my ( $self, $c ) = @_;
+	my $params = {%{$c->req->params}};
+	delete $params->{'content-type'};
+
+	my $search_params = {
+		(defined $params->{city} ? ( city => { -like => '%' . $params->{city} . '%' } ) : ()),  
+		(defined $params->{state} ? ( state => $params->{state} ) : ()),
+		(defined $params->{country} ? ( country => $params->{country} ) : ()),
+	};
+
+	$c->stash->{'job_loc'} = $c->model("DB::Job")->search($search_params);
+}
+
+sub job_location_GET {
+	my ( $self, $c ) = @_;
+	
+	my $job_loc = $c->stash->{job_loc};
+
+	my @location = map { $_->street_address . " " . $_->city . " " . $_->state . ", " .$_->country } $job_loc->all;
+
+	if( defined($job_loc) ) {
+		$self->status_ok(
+			$c,
+			entity => {
+				error => "0",
+				message => {
+					count => scalar @location,
+					location => \@location,
+				}
+			}
+		);
+	} else {
+		$self->status_not_found(
+			$c,
+			message => "Could not load job locations.",
+		);
+	}
+}
 
 sub job_list_GET {
 	my ( $self, $c ) = @_;
 
-	my %job_list;
-	my @jobs = $c->model("DB::Job")->search()->all;
+	my $params = $c->req->params;
 
-	$self->status_ok($c, entity => \@jobs );
+	my $search_params = {
+		(defined $params->{city} ? ( city => { -like => '%' . $params->{city} . '%' } ) : ()),
+		(defined $params->{state} ? ( state => $params->{state} ) : ()),
+		(defined $params->{country} ? ( country => $params->{country} ) : ()),
+		(defined $params->{title} ? ( title => { -like => '%' . $params->{title} . '%' } ) : ()),
+		(defined $params->{description} ? ( description => { -like => '%' . $params->{description} . '%' } ) : ()),
+	};
+
+	my %job_list;
+	my @jobs = $c->model("DB::Job")->search($search_params)->all;
+
+	$self->status_ok($c, entity => { error => "0", results => scalar @jobs, message => \@jobs });
 }
 
 sub single_job : Path('/jobs/job_list') : Args(1) : ActionClass('REST') {
@@ -66,6 +113,8 @@ sub single_job_GET {
 		$self->status_ok(
 			$c,
 			entity => {
+				error => "0",
+				message => {
 				job_id => $job->job_id,
 				country => $job->country,
 				date => $job->date,
@@ -75,6 +124,7 @@ sub single_job_GET {
 				category => $job->category,
 				title => $job->title,
 				company => $job->company,
+				}
 			}
 		);
 	}

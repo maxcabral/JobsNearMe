@@ -10,6 +10,7 @@ use XML::Simple;
 use Getopt::Long;
 use IO::File;
 use LWP;
+use Try::Tiny;
 
 my $schema = Hack4LA::Schema->connect('dbi:mysql:database=hack4la','max','cabral',{ AutoCommit => 1 },);
 warn ref $schema;
@@ -28,6 +29,7 @@ if (my $fh = IO::File->new($file_loc)){
   my $jobs = $ref->{job};
   warn ref $jobs;
   warn scalar @{$jobs};
+  warn "Working";
   upload_records($jobs);
 }
 
@@ -35,7 +37,11 @@ sub upload_records {
   my ($jobs) = shift;
   
   foreach my $job (@{$jobs}){
-    $schema->resultset('Job')->create($job);
+    try {
+	$schema->resultset('Job')->create($job);
+    } catch {
+
+    };
   }  
 };
 
