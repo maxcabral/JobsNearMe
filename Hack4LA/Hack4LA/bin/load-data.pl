@@ -11,11 +11,8 @@ use Getopt::Long;
 use IO::File;
 use LWP;
 
-my $schema = Hack4LA::Schema->clone();
-
+my $schema = Hack4LA::Schema->connect('dbi:mysql:database=hack4la','max','cabral',{ AutoCommit => 1 },);
 warn ref $schema;
-
-$schema->connect('dbi:mysql:database=hack4la','max','cabral',{ AutoCommit => 1 },);
 
 warn $schema->resultset('Job')->search()->count();
 
