@@ -16,8 +16,6 @@ warn ref $schema;
 
 warn $schema->resultset('Job')->search()->count();
 
-die;
-
 my $file_loc;
 GetOptions(
   'file=s' => \$file_loc,
@@ -30,9 +28,14 @@ if (my $fh = IO::File->new($file_loc)){
   my $jobs = $ref->{job};
   warn ref $jobs;
   warn scalar @{$jobs};
+  upload_records($jobs);
 }
 
 sub upload_records {
+  my ($jobs) = shift;
   
+  foreach my $job (@{$jobs}){
+    $schema->resultset('Job')->create($job);
+  }  
 };
 
