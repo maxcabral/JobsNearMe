@@ -32,19 +32,15 @@ sub index :Path :Args(0) {
 	);
 }
 
-sub create : Local{
-	my ( $self, $c ) = @_;
-
-	$c->response->body("INSERTED");
-}
-
 sub job_list : Path('/jobs/job_list') : Args(0) : ActionClass('REST') {}
+
 sub job_location : Path('/jobs/job_location') : Args(0) : ActionClass('REST') {
 	my ( $self, $c ) = @_;
 	my $params = {%{$c->req->params}};
 	delete $params->{'content-type'};
 
 	my $search_params = {
+		(defined $params->{street_address} ? ( street_address => { -like => '%' . $params->{street_address} . '%' } ) : ()),
 		(defined $params->{city} ? ( city => { -like => '%' . $params->{city} . '%' } ) : ()),  
 		(defined $params->{state} ? ( state => $params->{state} ) : ()),
 		(defined $params->{country} ? ( country => $params->{country} ) : ()),
@@ -85,6 +81,7 @@ sub job_list_GET {
 	my $params = $c->req->params;
 
 	my $search_params = {
+		(defined $params->{street_address} ? ( street_address => { -like => '%' . $params->{street_address} . '%' } ) : ()),
 		(defined $params->{city} ? ( city => { -like => '%' . $params->{city} . '%' } ) : ()),
 		(defined $params->{state} ? ( state => $params->{state} ) : ()),
 		(defined $params->{country} ? ( country => $params->{country} ) : ()),
@@ -123,6 +120,7 @@ sub single_job_GET {
 				url => $job->url,
 				category => $job->category,
 				title => $job->title,
+				street_address => $job->street_address,
 				company => $job->company,
 				}
 			}
