@@ -9,6 +9,7 @@
 #import "jmeMapVC.h"
 #import "jmeMapAnnotation.h"
 #import "jmeJobDetailVC.h"
+#import "jmeJobVC.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -100,6 +101,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"presentJob"]){
+        jmeJobVC *vc = segue.destinationViewController;
+        vc.url = @"http://jobs.ziprecruiter.com";
+    }
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50816163175AAC5F00DDFC85 /* jmeJobDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816162175AAC5F00DDFC85 /* jmeJobDetailVC.m */; };
+		50816166175ACAF700DDFC85 /* jmeJobVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816165175ACAF700DDFC85 /* jmeJobVC.m */; };
 		50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B7992B175A86740029969B /* CoreLocation.framework */; };
 		50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B7992E175A8F260029969B /* jmeMapAnnotation.m */; };
 		50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		50816161175AAC5F00DDFC85 /* jmeJobDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeJobDetailVC.h; path = View/jmeJobDetailVC.h; sourceTree = "<group>"; };
 		50816162175AAC5F00DDFC85 /* jmeJobDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeJobDetailVC.m; path = View/jmeJobDetailVC.m; sourceTree = "<group>"; };
+		50816164175ACAF700DDFC85 /* jmeJobVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeJobVC.h; path = Controllers/jmeJobVC.h; sourceTree = "<group>"; };
+		50816165175ACAF700DDFC85 /* jmeJobVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeJobVC.m; path = Controllers/jmeJobVC.m; sourceTree = "<group>"; };
 		50B7992B175A86740029969B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50B7992D175A8F260029969B /* jmeMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeMapAnnotation.h; path = View/jmeMapAnnotation.h; sourceTree = "<group>"; };
 		50B7992E175A8F260029969B /* jmeMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeMapAnnotation.m; path = View/jmeMapAnnotation.m; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				50C66A69175A8301009F817D /* jmeMapVC.m */,
 				50C66A6F175A8301009F817D /* jmeSecondViewController.h */,
 				50C66A70175A8301009F817D /* jmeSecondViewController.m */,
+				50816164175ACAF700DDFC85 /* jmeJobVC.h */,
+				50816165175ACAF700DDFC85 /* jmeJobVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				50C66A71175A8301009F817D /* jmeSecondViewController.m in Sources */,
 				50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */,
 				50816163175AAC5F00DDFC85 /* jmeJobDetailVC.m in Sources */,
+				50816166175ACAF700DDFC85 /* jmeJobVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
