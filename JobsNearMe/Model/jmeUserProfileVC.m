@@ -32,11 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    UITapGestureRecognizer *touchToHide = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                  action:@selector(hideKeyboard)];
-    
-//    [self.view addGestureRecognizer:touchToHide];
     
     _store = [[NSMutableArray alloc] init];
 }

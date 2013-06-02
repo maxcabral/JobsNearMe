@@ -19,6 +19,8 @@
 		5081617D175AFFE300DDFC85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5081617C175AFFE300DDFC85 /* CoreData.framework */; };
 		50816180175B08BB00DDFC85 /* jmeUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5081617F175B08BB00DDFC85 /* jmeUserProfileVC.m */; };
 		50816181175B08BB00DDFC85 /* jmeUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5081617F175B08BB00DDFC85 /* jmeUserProfileVC.m */; };
+		50816185175B1DEF00DDFC85 /* jmeHeatAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */; };
+		50816188175B267B00DDFC85 /* jmeHeatAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */; };
 		50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B7992B175A86740029969B /* CoreLocation.framework */; };
 		50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B7992E175A8F260029969B /* jmeMapAnnotation.m */; };
 		50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
@@ -69,6 +71,10 @@
 		5081617C175AFFE300DDFC85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5081617E175B08BB00DDFC85 /* jmeUserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeUserProfileVC.h; path = Model/jmeUserProfileVC.h; sourceTree = "<group>"; };
 		5081617F175B08BB00DDFC85 /* jmeUserProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeUserProfileVC.m; path = Model/jmeUserProfileVC.m; sourceTree = "<group>"; };
+		50816183175B1DEF00DDFC85 /* jmeHeatAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeHeatAnnotation.h; path = View/jmeHeatAnnotation.h; sourceTree = "<group>"; };
+		50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeHeatAnnotation.m; path = View/jmeHeatAnnotation.m; sourceTree = "<group>"; };
+		50816186175B267A00DDFC85 /* jmeHeatAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeHeatAnnotationView.h; path = View/jmeHeatAnnotationView.h; sourceTree = "<group>"; };
+		50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeHeatAnnotationView.m; path = View/jmeHeatAnnotationView.m; sourceTree = "<group>"; };
 		50B7992B175A86740029969B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50B7992D175A8F260029969B /* jmeMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeMapAnnotation.h; path = View/jmeMapAnnotation.h; sourceTree = "<group>"; };
 		50B7992E175A8F260029969B /* jmeMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeMapAnnotation.m; path = View/jmeMapAnnotation.m; sourceTree = "<group>"; };
@@ -162,6 +168,10 @@
 				50B7992E175A8F260029969B /* jmeMapAnnotation.m */,
 				50816161175AAC5F00DDFC85 /* jmeJobDetailVC.h */,
 				50816162175AAC5F00DDFC85 /* jmeJobDetailVC.m */,
+				50816183175B1DEF00DDFC85 /* jmeHeatAnnotation.h */,
+				50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */,
+				50816186175B267A00DDFC85 /* jmeHeatAnnotationView.h */,
+				50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -376,6 +386,8 @@
 				50816176175AFA9700DDFC85 /* JmeUserSearch.m in Sources */,
 				5081617A175AFAAA00DDFC85 /* JmeUserSkill.m in Sources */,
 				50816180175B08BB00DDFC85 /* jmeUserProfileVC.m in Sources */,
+				50816185175B1DEF00DDFC85 /* jmeHeatAnnotation.m in Sources */,
+				50816188175B267B00DDFC85 /* jmeHeatAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
