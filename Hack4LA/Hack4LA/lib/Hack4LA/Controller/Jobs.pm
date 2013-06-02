@@ -3,6 +3,8 @@ package Hack4LA::Controller::Jobs;
 use Moose;
 use namespace::autoclean;
 
+use Hack4LA::Util::Api;
+
 BEGIN { extends 'Catalyst::Controller::REST'; }
 
 

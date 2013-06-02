@@ -8,8 +8,10 @@
 
 #import "jmeMapVC.h"
 #import "jmeMapAnnotation.h"
+#import "jmeHeatAnnotation.h"
 #import "jmeJobDetailVC.h"
 #import "jmeJobVC.h"
+#import "jmeHeatAnnotationView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -17,8 +19,9 @@
 {
     CLLocationManager *locationManager;
     CLLocation *currentPosition;
-    IBOutlet UIView *detailView;
+    IBOutlet UIButton *geoLocateButton;
     
+    IBOutlet UIView *detailView;
     IBOutlet UILabel *jobDetailNameLabel;
     IBOutlet UILabel *jobDetailAddressLabel;
     IBOutlet UITextView *jobDetailDescription;
@@ -66,6 +69,20 @@
             bView.titleLabel.layer.masksToBounds = NO;
         }
     }
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    
+    // Modify any animatable properties
+    geoLocateButton.transform = CGAffineTransformMakeRotation( 290 * M_PI / 180 );
+    geoLocateButton.layer.shadowColor = [[UIColor whiteColor] CGColor];
+    geoLocateButton.layer.shadowRadius = 2.0f;
+    geoLocateButton.layer.shadowOpacity = .9;
+    geoLocateButton.layer.shadowOffset = CGSizeZero;
+    geoLocateButton.layer.masksToBounds = NO;
+    
+    [UIView commitAnimations];
     
     // Add a long press gesture recognizer to the map for
     // adding new pins to the map
@@ -198,39 +215,45 @@
     initWithCoordinate:newLocation.coordinate];
     annotation.title = @"Me";
     annotation.subtitle = @"My Address";
+    
+    CLLocationCoordinate2D heatLoc = CLLocationCoordinate2DMake(newLocation.coordinate.latitude - 5.0, newLocation.coordinate.longitude -5.0);
+    jmeHeatAnnotation *hAnn = [[jmeHeatAnnotation alloc] initWithCoordinate:newLocation.coordinate];
+    [hAnn setRedColor];
 
-    [self.mapView addAnnotation:annotation];
+//    [self.mapView addAnnotation:annotation];
+    [self.mapView addAnnotation:hAnn];
 }
 
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(jmeMapAnnotation *) annotation {
-    
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >) annotation {
    // if(annotation.coordinate == self.mapView.userLocation.coordinate) return nil;
     
-    static NSString* AnnotationIdentifier = @"AnnotationIdentifier1";
+    if ([annotation isKindOfClass:[jmeMapAnnotation class]]){
     
-    /*
-    jmeMapAnnotationView* customPinView = [[jmeMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
-    customPinView.pinColor = MKPinAnnotationColorRed;
-    customPinView.animatesDrop = YES;
-    customPinView.canShowCallout = YES;
-    */
+        NSString* AnnotationIdentifier = @"calloutAnnotation";
+        
+        MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+        customPinView.pinColor = MKPinAnnotationColorRed;
+        customPinView.animatesDrop = YES;
+        customPinView.canShowCallout = YES;
+        
+        UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        [rightButton addTarget:self
+                        action:@selector(showJobDetails:)
+              forControlEvents:UIControlEventTouchUpInside];
+        customPinView.rightCalloutAccessoryView = rightButton;
+        
+        //UIImageView *memorialIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"googlemaps_pin.png"]];
+        //customPinView.leftCalloutAccessoryView = memorialIcon;
+        
+        return customPinView;
+    } else if ([annotation isKindOfClass:[jmeHeatAnnotation class]]){
+        
+        jmeHeatAnnotationView* customPinView = [[jmeHeatAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"heatmapAnnotation"];
+        return customPinView;
+    } else {
+        return nil;
+    }
     
-    MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc]
-                                           initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
-    customPinView.pinColor = MKPinAnnotationColorRed;
-    customPinView.animatesDrop = YES;
-    customPinView.canShowCallout = YES;
-    
-    UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [rightButton addTarget:self
-                    action:@selector(showJobDetails:)
-          forControlEvents:UIControlEventTouchUpInside];
-    customPinView.rightCalloutAccessoryView = rightButton;
-    
-    //UIImageView *memorialIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"googlemaps_pin.png"]];
-    //customPinView.leftCalloutAccessoryView = memorialIcon;
-    
-    return customPinView;
 }
 
 - (IBAction)showJobDetails:(id)sender {
