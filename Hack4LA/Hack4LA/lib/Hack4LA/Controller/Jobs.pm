@@ -87,6 +87,10 @@ sub single_job_POST {
 
 	my $new_job_data = $c->req->data;
 
+	warn ref $new_job_data;
+	use Data::Dumper;
+	warn Dumper($new_job_data);
+
 	if( !defined($new_job_data) ) {
 		return $self->status_bad_request( $c, message => "You must provide a job to create or modify." );
 	}
@@ -105,28 +109,20 @@ sub single_job_POST {
 		return $self->status_bad_request( $c, message => "Missing required field: " . $required ) if !exists( $new_job_data->{$required} );
 	}
 
-	my $job = $c->model("DB::Job")->update_or_create(
-		job_id => $new_job_data->{'job_id'},
-		description => $new_job_data->{'description'},
-		title => $new_job_data->{'title'},
-	);
-
-	my $return_entity = {
-		job_id => $job->job_id,
-		description => $job->description,
-		title => $job->title,
-	};
+	my $job = $c->model("DB::Job")->update_or_create($new_job_data);
 
 	if ( $c->stash->{'job'} ) {
-		$self->status_ok( $c, entity => $return_entity, );
+		$self->status_ok( $c, entity => { message => "Job info has been updated." }, );
 	} else {
 		$self->status_created(
 			$c,
 			location => $c->req->uri->as_string,
-			entity => $return_entity,
+			entity => { message => "New job has been created." },
 		);
 	}
 }
+
+*single_job_PUT = *single_job_POST;
 
 sub single_job_DELETE {
 	my ( $self, $c, $job_id ) = @_;
@@ -137,7 +133,7 @@ sub single_job_DELETE {
 		$job->delete;
 		$self->status_ok(
 			$c,
-			message => "Job has been deleted.",
+			entity => { error => "Job has been deleted." },
 		);
 	} else {
 		$self->status_not_found( $c, message => "Cannot delete non-existent job." );
