@@ -7,27 +7,22 @@
 //
 
 #import "jmeMapAnnotation.h"
+@interface jmeMapAnnotation(){
+    
+}
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+@end
 
 @implementation jmeMapAnnotation
-@synthesize name, address, details;
+@synthesize title, subtitle, details, coordinate;
 
--(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+-(id)initWithCoordinate:(CLLocationCoordinate2D)theCoordinate
 {
     self = [super init];
     if (self){
-        self.coordinate = coordinate;
+        self.coordinate = theCoordinate;
     }
     return self;
-}
-
--(NSString*)title
-{
-    return name;
-}
-
--(NSString*)subtitle
-{
-    return address;
 }
 
 @end

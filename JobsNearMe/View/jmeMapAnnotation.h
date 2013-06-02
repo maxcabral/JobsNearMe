@@ -11,9 +11,10 @@
 
 @interface jmeMapAnnotation : NSObject<MKAnnotation>
 
-@property (strong) NSString *name;
-@property (strong) NSString *address;
-@property (assign) NSArray *details;
+@property (strong) NSString *title;
+@property (strong) NSString *subtitle;
+@property (strong) NSArray *details;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 -(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 

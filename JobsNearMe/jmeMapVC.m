@@ -7,19 +7,26 @@
 //
 
 #import "jmeMapVC.h"
+#import "jmeMapAnnotation.h"
+#import "jmeJobDetailVC.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 @interface jmeMapVC ()
 {
     CLLocationManager *locationManager;
     CLLocation *currentPosition;
+    IBOutlet UIView *detailView;
+    
+    IBOutlet UILabel *jobDetailNameLabel;
+    IBOutlet UILabel *jobDetailAddressLabel;
+    IBOutlet UITextView *jobDetailDescription;
+    IBOutlet UIButton *jobDetailLinkButton;
+    
+    IBOutlet UIToolbar *keyboardToolbar;
+    
 }
 @property IBOutlet MKMapView *mapView;
-@end
-
-@interface jmeMapVC (MapViewDelegate)
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation;
 @end
 
 @implementation jmeMapVC
@@ -37,15 +44,55 @@
     locationManager.delegate = self;
     // Set the desired accuracy.
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    detailView.layer.cornerRadius = 10.0;
+    
+    UIColor *color = [UIColor whiteColor];
+    
+    for (UIView *view in (detailView.subviews)) {
+        if ([view isKindOfClass:[UILabel class]]){
+            view.layer.shadowColor = [color CGColor];
+            view.layer.shadowRadius = 4.0f;
+            view.layer.shadowOpacity = .9;
+            view.layer.shadowOffset = CGSizeZero;
+            view.layer.masksToBounds = NO;
+        } else if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *bView = (UIButton*)view;
+            bView.titleLabel.layer.shadowColor = [color CGColor];
+            bView.titleLabel.layer.shadowRadius = 4.0f;
+            bView.titleLabel.layer.shadowOpacity = .9;
+            bView.titleLabel.layer.shadowOffset = CGSizeZero;
+            bView.titleLabel.layer.masksToBounds = NO;
+        }
+    }
+    
+    // Add a long press gesture recognizer to the map for
+    // adding new pins to the map
+    /*
+    UITapGestureRecognizer *touchToHide = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                           action:@selector(hideKeyboard)];
+    
+    for (uint cnt = 0; cnt < self.mapView.gestureRecognizers.count; cnt++){
+        if (cnt != self.mapView.gestureRecognizers.count - 4){
+            [touchToHide requireGestureRecognizerToFail:[self.mapView.gestureRecognizers objectAtIndex:cnt]];
+        }
+    }
+   
+    [self.mapView addGestureRecognizer:touchToHide];*/
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     currentPosition = nil;
 }
 
@@ -53,6 +100,49 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0];
+    CGRect frame = keyboardToolbar.frame;
+    float s = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey]CGRectValue].origin.y - frame.size.height - 40;
+    float b = self.view.frame.size.height - 260.0;
+    frame.origin.y = s;
+    keyboardToolbar.frame = frame;
+    [UIView commitAnimations];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.25];
+    
+    frame = keyboardToolbar.frame;
+    s = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue].origin.y - frame.size.height - 20;
+    b = self.view.frame.size.height - 260.0;
+    frame.origin.y = s;
+    keyboardToolbar.frame = frame;
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    
+    CGRect frame = keyboardToolbar.frame;
+    frame.origin.y = self.view.frame.size.height;
+    keyboardToolbar.frame = frame;
+    
+    [UIView commitAnimations];
+}
+
+- (IBAction)hideKBSelected:(id)sender
+{
+    [self hideKeyboard];
+}
+
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
 }
 
 - (IBAction)locateSelected:(id)sender
@@ -63,24 +153,12 @@
     }
 }
 
-@end
-
-@implementation jmeMapVC (MapViewDelegate)
-
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     [locationManager stopUpdatingLocation];
 
     [self moveViewToLocation:newLocation];
-    /*
-        HUWMapAnnotation *annotation =
-        [[HUWMapAnnotation alloc]
-         initWithCoordinate:newLocation.coordinate];
-        annotation.name = @"Hugo Wetterberg";
-        annotation.email = @"hugo@wetterberg.nu";
-        annotation.age = 30;
-        [self.mapView addAnnotation:annotation];*/
 }
 
 - (void)moveViewToLocation:(CLLocation*)newLocation
@@ -104,6 +182,53 @@
     
     // Tell the map view to show the rectangle.
     [self.mapView setVisibleMapRect:rect animated:YES];
+    
+    
+    jmeMapAnnotation *annotation = [[jmeMapAnnotation alloc]
+    initWithCoordinate:newLocation.coordinate];
+    annotation.title = @"Me";
+    annotation.subtitle = @"My Address";
+
+    [self.mapView addAnnotation:annotation];
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(jmeMapAnnotation *) annotation {
+    
+   // if(annotation.coordinate == self.mapView.userLocation.coordinate) return nil;
+    
+    static NSString* AnnotationIdentifier = @"AnnotationIdentifier1";
+    
+    /*
+    jmeMapAnnotationView* customPinView = [[jmeMapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+    customPinView.pinColor = MKPinAnnotationColorRed;
+    customPinView.animatesDrop = YES;
+    customPinView.canShowCallout = YES;
+    */
+    
+    MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc]
+                                           initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+    customPinView.pinColor = MKPinAnnotationColorRed;
+    customPinView.animatesDrop = YES;
+    customPinView.canShowCallout = YES;
+    
+    UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton addTarget:self
+                    action:@selector(showJobDetails:)
+          forControlEvents:UIControlEventTouchUpInside];
+    customPinView.rightCalloutAccessoryView = rightButton;
+    
+    //UIImageView *memorialIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"googlemaps_pin.png"]];
+    //customPinView.leftCalloutAccessoryView = memorialIcon;
+    
+    return customPinView;
+}
+
+- (IBAction)showJobDetails:(id)sender {
+    detailView.hidden = NO;
+}
+
+- (IBAction)hideJobDetails:(id)sender {
+    detailView.hidden = YES;
 }
 
 @end
