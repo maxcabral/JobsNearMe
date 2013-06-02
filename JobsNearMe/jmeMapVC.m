@@ -104,6 +104,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    NSArray *heatPoints = [NSArray arrayWithObjects:@"6666 Yucca St Hollywood CA 90028",@"Los Angeles, CA",@"1600 E 4th St. Los Angeles, 90033", nil];
+    [self addHeatMap:heatPoints];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -220,8 +223,22 @@
     jmeHeatAnnotation *hAnn = [[jmeHeatAnnotation alloc] initWithCoordinate:newLocation.coordinate];
     [hAnn setRedColor];
 
-//    [self.mapView addAnnotation:annotation];
-    [self.mapView addAnnotation:hAnn];
+    [self.mapView addAnnotation:annotation];
+}
+
+- (void)addHeatMap:(NSArray*)heatLocations
+{
+    for (NSString *loc in heatLocations) {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:loc completionHandler:^(NSArray* placemarks, NSError* error){
+            for (CLPlacemark* aPlacemark in placemarks)
+            {
+                jmeHeatAnnotation *hAnn = [[jmeHeatAnnotation alloc] initWithCoordinate:aPlacemark.location.coordinate];
+                [hAnn setRedColor];
+                [self.mapView addAnnotation:hAnn];
+            }
+        }];
+    }
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >) annotation {
