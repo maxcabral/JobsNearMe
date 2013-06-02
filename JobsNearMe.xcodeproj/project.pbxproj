@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		50816163175AAC5F00DDFC85 /* jmeJobDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816162175AAC5F00DDFC85 /* jmeJobDetailVC.m */; };
 		50816166175ACAF700DDFC85 /* jmeJobVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816165175ACAF700DDFC85 /* jmeJobVC.m */; };
+		50816169175AF6C900DDFC85 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50816167175AF6C900DDFC85 /* Model.xcdatamodeld */; };
+		50816172175AFA8900DDFC85 /* JmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816171175AFA8900DDFC85 /* JmeUser.m */; };
+		50816173175AFA8900DDFC85 /* JmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816171175AFA8900DDFC85 /* JmeUser.m */; };
+		50816176175AFA9700DDFC85 /* JmeUserSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816175175AFA9700DDFC85 /* JmeUserSearch.m */; };
+		50816177175AFA9700DDFC85 /* JmeUserSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816175175AFA9700DDFC85 /* JmeUserSearch.m */; };
+		5081617A175AFAAA00DDFC85 /* JmeUserSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816179175AFAAA00DDFC85 /* JmeUserSkill.m */; };
+		5081617B175AFAAA00DDFC85 /* JmeUserSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816179175AFAAA00DDFC85 /* JmeUserSkill.m */; };
+		5081617D175AFFE300DDFC85 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5081617C175AFFE300DDFC85 /* CoreData.framework */; };
 		50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B7992B175A86740029969B /* CoreLocation.framework */; };
 		50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B7992E175A8F260029969B /* jmeMapAnnotation.m */; };
 		50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
@@ -24,7 +32,6 @@
 		50C66A6A175A8301009F817D /* jmeMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A69175A8301009F817D /* jmeMapVC.m */; };
 		50C66A6C175A8301009F817D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A6B175A8301009F817D /* first.png */; };
 		50C66A6E175A8301009F817D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A6D175A8301009F817D /* first@2x.png */; };
-		50C66A71175A8301009F817D /* jmeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C66A70175A8301009F817D /* jmeSecondViewController.m */; };
 		50C66A73175A8301009F817D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A72175A8301009F817D /* second.png */; };
 		50C66A75175A8301009F817D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50C66A74175A8301009F817D /* second@2x.png */; };
 		50C66A7D175A8302009F817D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A7C175A8302009F817D /* SenTestingKit.framework */; };
@@ -50,6 +57,14 @@
 		50816162175AAC5F00DDFC85 /* jmeJobDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeJobDetailVC.m; path = View/jmeJobDetailVC.m; sourceTree = "<group>"; };
 		50816164175ACAF700DDFC85 /* jmeJobVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeJobVC.h; path = Controllers/jmeJobVC.h; sourceTree = "<group>"; };
 		50816165175ACAF700DDFC85 /* jmeJobVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeJobVC.m; path = Controllers/jmeJobVC.m; sourceTree = "<group>"; };
+		50816168175AF6C900DDFC85 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		50816170175AFA8900DDFC85 /* JmeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JmeUser.h; path = Model/JmeUser.h; sourceTree = "<group>"; };
+		50816171175AFA8900DDFC85 /* JmeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JmeUser.m; path = Model/JmeUser.m; sourceTree = "<group>"; };
+		50816174175AFA9700DDFC85 /* JmeUserSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JmeUserSearch.h; path = Model/JmeUserSearch.h; sourceTree = "<group>"; };
+		50816175175AFA9700DDFC85 /* JmeUserSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JmeUserSearch.m; path = Model/JmeUserSearch.m; sourceTree = "<group>"; };
+		50816178175AFAAA00DDFC85 /* JmeUserSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JmeUserSkill.h; path = Model/JmeUserSkill.h; sourceTree = "<group>"; };
+		50816179175AFAAA00DDFC85 /* JmeUserSkill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JmeUserSkill.m; path = Model/JmeUserSkill.m; sourceTree = "<group>"; };
+		5081617C175AFFE300DDFC85 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		50B7992B175A86740029969B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50B7992D175A8F260029969B /* jmeMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeMapAnnotation.h; path = View/jmeMapAnnotation.h; sourceTree = "<group>"; };
 		50B7992E175A8F260029969B /* jmeMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeMapAnnotation.m; path = View/jmeMapAnnotation.m; sourceTree = "<group>"; };
@@ -71,8 +86,6 @@
 		50C66A69175A8301009F817D /* jmeMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jmeMapVC.m; sourceTree = "<group>"; };
 		50C66A6B175A8301009F817D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		50C66A6D175A8301009F817D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		50C66A6F175A8301009F817D /* jmeSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jmeSecondViewController.h; sourceTree = "<group>"; };
-		50C66A70175A8301009F817D /* jmeSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jmeSecondViewController.m; sourceTree = "<group>"; };
 		50C66A72175A8301009F817D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		50C66A74175A8301009F817D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		50C66A7B175A8302009F817D /* JobsNearMeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobsNearMeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5081617D175AFFE300DDFC85 /* CoreData.framework in Frameworks */,
 				50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */,
 				50C66A94175A842B009F817D /* MapKit.framework in Frameworks */,
 				50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */,
@@ -115,8 +129,6 @@
 			children = (
 				50C66A68175A8301009F817D /* jmeMapVC.h */,
 				50C66A69175A8301009F817D /* jmeMapVC.m */,
-				50C66A6F175A8301009F817D /* jmeSecondViewController.h */,
-				50C66A70175A8301009F817D /* jmeSecondViewController.m */,
 				50816164175ACAF700DDFC85 /* jmeJobVC.h */,
 				50816165175ACAF700DDFC85 /* jmeJobVC.m */,
 			);
@@ -126,6 +138,13 @@
 		50B79929175A85830029969B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				50816167175AF6C900DDFC85 /* Model.xcdatamodeld */,
+				50816178175AFAAA00DDFC85 /* JmeUserSkill.h */,
+				50816179175AFAAA00DDFC85 /* JmeUserSkill.m */,
+				50816174175AFA9700DDFC85 /* JmeUserSearch.h */,
+				50816175175AFA9700DDFC85 /* JmeUserSearch.m */,
+				50816170175AFA8900DDFC85 /* JmeUser.h */,
+				50816171175AFA8900DDFC85 /* JmeUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -144,6 +163,7 @@
 		50C66A41175A8301009F817D = {
 			isa = PBXGroup;
 			children = (
+				5081617C175AFFE300DDFC85 /* CoreData.framework */,
 				50B7992B175A86740029969B /* CoreLocation.framework */,
 				50C66A93175A842B009F817D /* MapKit.framework */,
 				50C66A53175A8301009F817D /* JobsNearMe */,
@@ -342,10 +362,13 @@
 				50C66A5A175A8301009F817D /* main.m in Sources */,
 				50C66A5E175A8301009F817D /* jmeAppDelegate.m in Sources */,
 				50C66A6A175A8301009F817D /* jmeMapVC.m in Sources */,
-				50C66A71175A8301009F817D /* jmeSecondViewController.m in Sources */,
 				50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */,
 				50816163175AAC5F00DDFC85 /* jmeJobDetailVC.m in Sources */,
 				50816166175ACAF700DDFC85 /* jmeJobVC.m in Sources */,
+				50816169175AF6C900DDFC85 /* Model.xcdatamodeld in Sources */,
+				50816172175AFA8900DDFC85 /* JmeUser.m in Sources */,
+				50816176175AFA9700DDFC85 /* JmeUserSearch.m in Sources */,
+				5081617A175AFAAA00DDFC85 /* JmeUserSkill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +377,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C66A8A175A8302009F817D /* JobsNearMeTests.m in Sources */,
+				50816173175AFA8900DDFC85 /* JmeUser.m in Sources */,
+				50816177175AFA9700DDFC85 /* JmeUserSearch.m in Sources */,
+				5081617B175AFAAA00DDFC85 /* JmeUserSkill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +566,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		50816167175AF6C900DDFC85 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				50816168175AF6C900DDFC85 /* Model.xcdatamodel */,
+			);
+			currentVersion = 50816168175AF6C900DDFC85 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Model/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 50C66A42175A8301009F817D /* Project object */;
 }

@@ -17,8 +17,9 @@
 {
     CLLocationManager *locationManager;
     CLLocation *currentPosition;
-    IBOutlet UIView *detailView;
+    IBOutlet UIButton *geoLocateButton;
     
+    IBOutlet UIView *detailView;
     IBOutlet UILabel *jobDetailNameLabel;
     IBOutlet UILabel *jobDetailAddressLabel;
     IBOutlet UITextView *jobDetailDescription;
@@ -66,6 +67,20 @@
             bView.titleLabel.layer.masksToBounds = NO;
         }
     }
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    
+    // Modify any animatable properties
+    geoLocateButton.transform = CGAffineTransformMakeRotation( 290 * M_PI / 180 );
+    geoLocateButton.layer.shadowColor = [[UIColor whiteColor] CGColor];
+    geoLocateButton.layer.shadowRadius = 2.0f;
+    geoLocateButton.layer.shadowOpacity = .9;
+    geoLocateButton.layer.shadowOffset = CGSizeZero;
+    geoLocateButton.layer.masksToBounds = NO;
+    
+    [UIView commitAnimations];
     
     // Add a long press gesture recognizer to the map for
     // adding new pins to the map

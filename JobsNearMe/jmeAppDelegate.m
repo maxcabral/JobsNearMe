@@ -8,7 +8,14 @@
 
 #import "jmeAppDelegate.h"
 
+@interface jmeAppDelegate(){
+    int errorCount;
+}
+
+@end
+
 @implementation jmeAppDelegate
+@synthesize  managedObjectContext, managedObjectModel, persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,5 +49,90 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Core Data
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (managedObjectModel == nil) {
+        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"Model" ofType:@"momd"];
+        NSURL *modelURL = [NSURL fileURLWithPath:modelPath];
+        managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    }
+    return managedObjectModel;
+}
+
+- (NSString *)documentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return documentsDirectory;
+}
+
+- (NSString *)dataStorePath
+{
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"DataStore.sqlite"];
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (persistentStoreCoordinator == nil) {
+        NSURL *storeURL = [NSURL fileURLWithPath:[self dataStorePath]];
+        
+        persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+        
+        NSError *error;
+        if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+            NSLog(@"Error adding persistent store %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    return persistentStoreCoordinator;
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (managedObjectContext == nil) {
+        NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+        if (coordinator != nil) {
+            managedObjectContext = [[NSManagedObjectContext alloc] init];
+            [managedObjectContext setPersistentStoreCoordinator:coordinator];
+        }
+    }
+    return managedObjectContext;
+}
+
+
+- (void)fatalCoreDataError:(NSError *)error
+{
+    UIAlertView *alertView;
+    if (++errorCount < 3){
+        alertView = [[UIAlertView alloc]
+                     initWithTitle:NSLocalizedString(@"Internal Error", nil)
+                     message:NSLocalizedString(@"There was an error saving the PotHole. It will not be available later. If the error persists try quitting the program and reopening it.", nil)
+                     delegate:self
+                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                     otherButtonTitles:nil];
+    } else {
+        alertView = [[UIAlertView alloc]
+                     initWithTitle:NSLocalizedString(@"Internal Error", nil)
+                     message:NSLocalizedString(@"Three critical errors have been detected. The application must exit.", nil)
+                     delegate:self
+                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                     otherButtonTitles:nil];
+    }
+    
+    [alertView show];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)theAlertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (errorCount >= 3){
+        abort();
+    }
+}
+
 
 @end
