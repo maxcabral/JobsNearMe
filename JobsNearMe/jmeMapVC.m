@@ -5,6 +5,7 @@
 //  Created by Maxwell Cabral on 6/1/13.
 //  Copyright (c) 2013 mCab. All rights reserved.
 //
+#include <stdlib.h>
 
 #import "jmeMapVC.h"
 #import "jmeMapAnnotation.h"
@@ -12,6 +13,7 @@
 #import "jmeJobDetailVC.h"
 #import "jmeJobVC.h"
 #import "jmeHeatAnnotationView.h"
+#import "jmeBaseAnnotation.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -29,16 +31,29 @@
     
     IBOutlet UIToolbar *keyboardToolbar;
     
+    IBOutlet UINavigationBar *navBar;
+    
 }
+@property (strong) NSOperationQueue *queue;
 @property IBOutlet MKMapView *mapView;
+@property (strong) NSString* lastResponse;
+@property (strong) NSString* jobLink;
+@end
+
+
+@interface jmeMapVC (IO)
+- (void)sendAsyncRequest:(NSMutableURLRequest*)request withSuccessSelector:(SEL)successSelector andFailureSelector:(SEL)failureSelector;
 @end
 
 @implementation jmeMapVC
-@synthesize mapView;
-
+@synthesize mapView, lastResponse;
+@synthesize queue;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    queue = [[NSOperationQueue alloc] init];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     // Check if the user has enabled location services.
     // Create a location manager.
@@ -97,6 +112,13 @@
     }
    
     [self.mapView addGestureRecognizer:touchToHide];*/
+    
+    // someplace where you create the UINavigationController
+    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
+        UIImage *image = [UIImage imageNamed:@"header"];
+        [navBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,8 +127,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    NSArray *heatPoints = [NSArray arrayWithObjects:@"6666 Yucca St Hollywood CA 90028",@"Los Angeles, CA",@"1600 E 4th St. Los Angeles, 90033", nil];
-    [self addHeatMap:heatPoints];
+    //NSArray *heatPoints = [NSArray arrayWithObjects:@"6666 Yucca St Hollywood CA 90028",@"Los Angeles, CA",@"1600 E 4th St. Los Angeles, 90033", nil];
+    //[self addHeatMap:heatPoints];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -128,7 +150,7 @@
 {
     if ([segue.identifier isEqualToString:@"presentJob"]){
         jmeJobVC *vc = segue.destinationViewController;
-        vc.url = @"http://jobs.ziprecruiter.com";
+        vc.url = self.jobLink;
     }
 }
 
@@ -212,39 +234,128 @@
     
     // Tell the map view to show the rectangle.
     [self.mapView setVisibleMapRect:rect animated:YES];
-    
-    
-    jmeMapAnnotation *annotation = [[jmeMapAnnotation alloc]
-    initWithCoordinate:newLocation.coordinate];
-    annotation.title = @"Me";
-    annotation.subtitle = @"My Address";
-    
-    CLLocationCoordinate2D heatLoc = CLLocationCoordinate2DMake(newLocation.coordinate.latitude - 5.0, newLocation.coordinate.longitude -5.0);
-    jmeHeatAnnotation *hAnn = [[jmeHeatAnnotation alloc] initWithCoordinate:newLocation.coordinate];
-    [hAnn setRedColor];
-
-    [self.mapView addAnnotation:annotation];
 }
 
-- (void)addHeatMap:(NSArray*)heatLocations
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    for (NSString *loc in heatLocations) {
+    [self performJobSearch:searchBar.text];
+    [self hideKeyboard];
+}
+
+- (void)performJobSearch:(NSString*)search
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",@"http://172.22.52.202:3030/jobs/job_list?content-type=application/json&description=",search,@"&state=CA&city=Angeles"]];
+    
+    //AsynchronousRequest to grab the data
+    //NSData *ReqData = [NSData dataWithBytes: [ReqString UTF8String] length: [ReqString length]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:60.0];
+    [request setHTTPMethod:@"GET"];
+    //[request setHTTPBody:ReqData];
+    
+    [self sendAsyncRequest:request withSuccessSelector:@selector(addSearchPoints:) andFailureSelector:@selector(searchFailed:)];
+}
+
+- (void)addSearchPoints:(NSDictionary*)response
+{
+    NSArray *jobLocations = [response objectForKey:@"message"];
+    for (NSDictionary *job in jobLocations) {
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        NSString *loc = [NSString stringWithFormat:@"%@ %@ %@",[job objectForKey:@"city"],[job objectForKey:@"state"],[job objectForKey:@"country"],nil];
         [geocoder geocodeAddressString:loc completionHandler:^(NSArray* placemarks, NSError* error){
+            NSDictionary *workingJob = job;
             for (CLPlacemark* aPlacemark in placemarks)
             {
-                jmeHeatAnnotation *hAnn = [[jmeHeatAnnotation alloc] initWithCoordinate:aPlacemark.location.coordinate];
-                [hAnn setRedColor];
-                [self.mapView addAnnotation:hAnn];
+                if (workingJob != nil){
+                    float diff = arc4random() % 10000 / 100000.0;
+                    float diff2 = arc4random() % 10000 / 100000.0;
+                    
+                    CLLocationCoordinate2D coord;
+                    int spread = arc4random() % 4;
+                    
+                    if (0 == spread){
+                        coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude - diff, aPlacemark.location.coordinate.longitude - diff2);
+                    } else if (1 == spread) {
+                        coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude - diff, aPlacemark.location.coordinate.longitude + diff2);
+                    } else if (2 == spread) {
+                        coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude + diff, aPlacemark.location.coordinate.longitude - diff2);
+                    } else {
+                        coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude + diff, aPlacemark.location.coordinate.longitude + diff2);
+                    }
+                    
+                    jmeMapAnnotation *annotation = [[jmeMapAnnotation alloc] initWithCoordinate:coord];
+                    annotation.title = [job objectForKey:@"title"];
+                    annotation.subtitle = loc;
+                    annotation.details = job;
+                    
+                    [self.mapView addAnnotation:(NSObject<MKAnnotation>*)annotation];
+                    workingJob = nil;
+                }
             }
         }];
     }
 }
 
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >) annotation {
+- (void)searchFailed:(NSDictionary*)response
+{
+    NSLog(@"%@",@"Search Failure");
+}
+
+- (IBAction)loadHeatMapTUI:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"http://172.22.52.202:3030/jobs/job_location?content-type=application/json&state=CA"];
+    
+    //AsynchronousRequest to grab the data
+    //NSData *ReqData = [NSData dataWithBytes: [ReqString UTF8String] length: [ReqString length]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:60.0];
+    [request setHTTPMethod:@"GET"];
+    //[request setHTTPBody:ReqData];
+    
+    [self sendAsyncRequest:request withSuccessSelector:@selector(addHeatMap:) andFailureSelector:@selector(heatMapFailed:)];
+}
+
+- (void)addHeatMap:(NSDictionary*)response
+{
+    NSArray *heatLocations = [[response objectForKey:@"message"] objectForKey:@"location"];
+    for (NSString *loc in heatLocations) {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:loc completionHandler:^(NSArray* placemarks, NSError* error){
+            for (CLPlacemark* aPlacemark in placemarks)
+            {
+                float diff = arc4random() % 10000 / 100000.0;
+                float diff2 = arc4random() % 10000 / 100000.0;
+                
+                CLLocationCoordinate2D coord;
+                int spread = arc4random() % 4;
+                
+                if (0 == spread){
+                    coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude - diff, aPlacemark.location.coordinate.longitude - diff2);
+                } else if (1 == spread) {
+                    coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude - diff, aPlacemark.location.coordinate.longitude + diff2);
+                } else if (2 == spread) {
+                    coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude + diff, aPlacemark.location.coordinate.longitude - diff2);
+                } else {
+                    coord = CLLocationCoordinate2DMake(aPlacemark.location.coordinate.latitude + diff, aPlacemark.location.coordinate.longitude + diff2);
+                }
+                
+                jmeMapAnnotation *hAnn = [[jmeMapAnnotation alloc] initWithCoordinate:coord];
+                [hAnn setRedColor];
+                [self.mapView addAnnotation:(NSObject<MKAnnotation>*)hAnn];
+            }
+        }];
+   }
+}
+
+- (void)heatMapFailed:(NSDictionary*)response
+{
+    NSLog(@"%@",@"Heat Failure");
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(jmeMapAnnotation*) annotation {
    // if(annotation.coordinate == self.mapView.userLocation.coordinate) return nil;
     
-    if ([annotation isKindOfClass:[jmeMapAnnotation class]]){
+    if ([annotation.details count] > 0){
     
         NSString* AnnotationIdentifier = @"calloutAnnotation";
         
@@ -259,13 +370,20 @@
               forControlEvents:UIControlEventTouchUpInside];
         customPinView.rightCalloutAccessoryView = rightButton;
         
+        NSDictionary *job = ((jmeMapAnnotation*)annotation).details;
+        NSString *loc = [NSString stringWithFormat:@"%@ %@ %@",[job objectForKey:@"city"],[job objectForKey:@"state"],[job objectForKey:@"country"],nil];
+        jobDetailNameLabel.text = [job objectForKey:@"name"];
+        jobDetailAddressLabel.text = loc;
+        jobDetailDescription.text = [job objectForKey:@"description"];
+        self.jobLink = [job objectForKey:@"url"];
+        
         //UIImageView *memorialIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"googlemaps_pin.png"]];
         //customPinView.leftCalloutAccessoryView = memorialIcon;
         
         return customPinView;
-    } else if ([annotation isKindOfClass:[jmeHeatAnnotation class]]){
+    } else if ([annotation.details count] == 0) {
         
-        jmeHeatAnnotationView* customPinView = [[jmeHeatAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"heatmapAnnotation"];
+        MKPinAnnotationView* customPinView = (MKPinAnnotationView*)[[jmeHeatAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"heatmapAnnotation"];
         return customPinView;
     } else {
         return nil;
@@ -281,4 +399,61 @@
     detailView.hidden = YES;
 }
 
+@end
+
+@implementation jmeMapVC (IO)
+
+- (void)sendAsyncRequest:(NSMutableURLRequest*)request withSuccessSelector:(SEL)successSelector andFailureSelector:(SEL)failureSelector
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [NSURLConnection sendAsynchronousRequest:request queue:self.queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+         if ([data length] > 0 && error == nil){
+             lastResponse = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:nil];
+             if (JSONResponse)
+             {
+                 NSString *success = [JSONResponse objectForKey:@"error"];
+                 if ([success isEqualToString:@"0"])
+                 {
+                     //Call on main thread in case we're trying to use a GUI element in the callback.
+                     [self performSelectorOnMainThread:successSelector
+                                                withObject:JSONResponse
+                                             waitUntilDone:NO];
+                     return;
+                 } else {
+                     [self performSelectorOnMainThread:failureSelector
+                                                withObject:JSONResponse
+                                             waitUntilDone:NO];
+                     return;
+                 }
+             } else {
+                 lastResponse = @"bad response";
+             }
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             //empty data
+             lastResponse = @"no data";
+         }
+         //used this NSURLErrorTimedOut from foundation error responses
+         else if (error != nil && error.code == NSURLErrorTimedOut)
+         {
+             //timeout
+             lastResponse = @"timeout";
+         }
+         else if (error != nil)
+         {
+             //generic error
+             lastResponse = @"generic error";
+         }
+         //If its a comm error, call the callback without a message.  The callback will check sender.lastResponse
+         //Call on main thread to prevent lockups and prevent a slow context switch.
+         [self performSelectorOnMainThread:failureSelector
+                                    withObject:nil
+                                 waitUntilDone:NO];
+         return;
+     }];
+}
 @end

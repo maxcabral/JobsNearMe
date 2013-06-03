@@ -21,6 +21,17 @@
 		50816181175B08BB00DDFC85 /* jmeUserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5081617F175B08BB00DDFC85 /* jmeUserProfileVC.m */; };
 		50816185175B1DEF00DDFC85 /* jmeHeatAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */; };
 		50816188175B267B00DDFC85 /* jmeHeatAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */; };
+		50816194175BD58500DDFC85 /* findjobs_pressed_button_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618A175BD58500DDFC85 /* findjobs_pressed_button_@2x.png */; };
+		50816195175BD58500DDFC85 /* findjobs_txt_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618B175BD58500DDFC85 /* findjobs_txt_@2x.png */; };
+		50816196175BD58500DDFC85 /* findjobs_unpressed_button_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618C175BD58500DDFC85 /* findjobs_unpressed_button_@2x.png */; };
+		50816197175BD58500DDFC85 /* header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618D175BD58500DDFC85 /* header@2x.png */; };
+		50816198175BD58500DDFC85 /* heatmap_button_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618E175BD58500DDFC85 /* heatmap_button_pressed@2x.png */; };
+		50816199175BD58500DDFC85 /* heatmap_button_unpressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5081618F175BD58500DDFC85 /* heatmap_button_unpressed@2x.png */; };
+		5081619A175BD58500DDFC85 /* myprofile_pressed_button_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50816190175BD58500DDFC85 /* myprofile_pressed_button_@2x.png */; };
+		5081619B175BD58500DDFC85 /* myprofile_txt_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50816191175BD58500DDFC85 /* myprofile_txt_@2x.png */; };
+		5081619C175BD58500DDFC85 /* myprofile_unpressed_button_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50816192175BD58500DDFC85 /* myprofile_unpressed_button_@2x.png */; };
+		5081619D175BD58500DDFC85 /* popup_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50816193175BD58500DDFC85 /* popup_@2x.png */; };
+		50AE6958175C01E6007B1089 /* jmeBaseAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50AE6957175C01E6007B1089 /* jmeBaseAnnotation.m */; };
 		50B7992C175A86740029969B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B7992B175A86740029969B /* CoreLocation.framework */; };
 		50B7992F175A8F260029969B /* jmeMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B7992E175A8F260029969B /* jmeMapAnnotation.m */; };
 		50C66A4E175A8301009F817D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C66A4D175A8301009F817D /* UIKit.framework */; };
@@ -75,6 +86,18 @@
 		50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeHeatAnnotation.m; path = View/jmeHeatAnnotation.m; sourceTree = "<group>"; };
 		50816186175B267A00DDFC85 /* jmeHeatAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeHeatAnnotationView.h; path = View/jmeHeatAnnotationView.h; sourceTree = "<group>"; };
 		50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeHeatAnnotationView.m; path = View/jmeHeatAnnotationView.m; sourceTree = "<group>"; };
+		5081618A175BD58500DDFC85 /* findjobs_pressed_button_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "findjobs_pressed_button_@2x.png"; path = "images/findjobs_pressed_button_@2x.png"; sourceTree = "<group>"; };
+		5081618B175BD58500DDFC85 /* findjobs_txt_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "findjobs_txt_@2x.png"; path = "images/findjobs_txt_@2x.png"; sourceTree = "<group>"; };
+		5081618C175BD58500DDFC85 /* findjobs_unpressed_button_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "findjobs_unpressed_button_@2x.png"; path = "images/findjobs_unpressed_button_@2x.png"; sourceTree = "<group>"; };
+		5081618D175BD58500DDFC85 /* header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "header@2x.png"; path = "images/header@2x.png"; sourceTree = "<group>"; };
+		5081618E175BD58500DDFC85 /* heatmap_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heatmap_button_pressed@2x.png"; path = "images/heatmap_button_pressed@2x.png"; sourceTree = "<group>"; };
+		5081618F175BD58500DDFC85 /* heatmap_button_unpressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heatmap_button_unpressed@2x.png"; path = "images/heatmap_button_unpressed@2x.png"; sourceTree = "<group>"; };
+		50816190175BD58500DDFC85 /* myprofile_pressed_button_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "myprofile_pressed_button_@2x.png"; path = "images/myprofile_pressed_button_@2x.png"; sourceTree = "<group>"; };
+		50816191175BD58500DDFC85 /* myprofile_txt_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "myprofile_txt_@2x.png"; path = "images/myprofile_txt_@2x.png"; sourceTree = "<group>"; };
+		50816192175BD58500DDFC85 /* myprofile_unpressed_button_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "myprofile_unpressed_button_@2x.png"; path = "images/myprofile_unpressed_button_@2x.png"; sourceTree = "<group>"; };
+		50816193175BD58500DDFC85 /* popup_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "popup_@2x.png"; path = "images/popup_@2x.png"; sourceTree = "<group>"; };
+		50AE6956175C01E6007B1089 /* jmeBaseAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeBaseAnnotation.h; path = View/jmeBaseAnnotation.h; sourceTree = "<group>"; };
+		50AE6957175C01E6007B1089 /* jmeBaseAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeBaseAnnotation.m; path = View/jmeBaseAnnotation.m; sourceTree = "<group>"; };
 		50B7992B175A86740029969B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50B7992D175A8F260029969B /* jmeMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jmeMapAnnotation.h; path = View/jmeMapAnnotation.h; sourceTree = "<group>"; };
 		50B7992E175A8F260029969B /* jmeMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jmeMapAnnotation.m; path = View/jmeMapAnnotation.m; sourceTree = "<group>"; };
@@ -134,6 +157,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50816189175BD52200DDFC85 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5081618A175BD58500DDFC85 /* findjobs_pressed_button_@2x.png */,
+				5081618B175BD58500DDFC85 /* findjobs_txt_@2x.png */,
+				5081618C175BD58500DDFC85 /* findjobs_unpressed_button_@2x.png */,
+				5081618D175BD58500DDFC85 /* header@2x.png */,
+				5081618E175BD58500DDFC85 /* heatmap_button_pressed@2x.png */,
+				5081618F175BD58500DDFC85 /* heatmap_button_unpressed@2x.png */,
+				50816190175BD58500DDFC85 /* myprofile_pressed_button_@2x.png */,
+				50816191175BD58500DDFC85 /* myprofile_txt_@2x.png */,
+				50816192175BD58500DDFC85 /* myprofile_unpressed_button_@2x.png */,
+				50816193175BD58500DDFC85 /* popup_@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		50B79928175A857D0029969B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +212,8 @@
 				50816184175B1DEF00DDFC85 /* jmeHeatAnnotation.m */,
 				50816186175B267A00DDFC85 /* jmeHeatAnnotationView.h */,
 				50816187175B267B00DDFC85 /* jmeHeatAnnotationView.m */,
+				50AE6956175C01E6007B1089 /* jmeBaseAnnotation.h */,
+				50AE6957175C01E6007B1089 /* jmeBaseAnnotation.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -212,6 +254,7 @@
 		50C66A53175A8301009F817D /* JobsNearMe */ = {
 			isa = PBXGroup;
 			children = (
+				50816189175BD52200DDFC85 /* Images */,
 				50B7992A175A85880029969B /* View */,
 				50B79929175A85830029969B /* Model */,
 				50B79928175A857D0029969B /* Controllers */,
@@ -341,6 +384,16 @@
 				50C66A6E175A8301009F817D /* first@2x.png in Resources */,
 				50C66A73175A8301009F817D /* second.png in Resources */,
 				50C66A75175A8301009F817D /* second@2x.png in Resources */,
+				50816194175BD58500DDFC85 /* findjobs_pressed_button_@2x.png in Resources */,
+				50816195175BD58500DDFC85 /* findjobs_txt_@2x.png in Resources */,
+				50816196175BD58500DDFC85 /* findjobs_unpressed_button_@2x.png in Resources */,
+				50816197175BD58500DDFC85 /* header@2x.png in Resources */,
+				50816198175BD58500DDFC85 /* heatmap_button_pressed@2x.png in Resources */,
+				50816199175BD58500DDFC85 /* heatmap_button_unpressed@2x.png in Resources */,
+				5081619A175BD58500DDFC85 /* myprofile_pressed_button_@2x.png in Resources */,
+				5081619B175BD58500DDFC85 /* myprofile_txt_@2x.png in Resources */,
+				5081619C175BD58500DDFC85 /* myprofile_unpressed_button_@2x.png in Resources */,
+				5081619D175BD58500DDFC85 /* popup_@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +441,7 @@
 				50816180175B08BB00DDFC85 /* jmeUserProfileVC.m in Sources */,
 				50816185175B1DEF00DDFC85 /* jmeHeatAnnotation.m in Sources */,
 				50816188175B267B00DDFC85 /* jmeHeatAnnotationView.m in Sources */,
+				50AE6958175C01E6007B1089 /* jmeBaseAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

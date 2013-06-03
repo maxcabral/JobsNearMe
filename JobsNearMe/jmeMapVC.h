@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface jmeMapVC : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface jmeMapVC : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate>
 
 @end

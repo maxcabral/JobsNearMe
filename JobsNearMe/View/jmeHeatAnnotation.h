@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "jmeBaseAnnotation.h"
 
-@interface jmeHeatAnnotation : NSObject<MKAnnotation>
+@interface jmeHeatAnnotation : jmeBaseAnnotation<MKAnnotation>
 @property (strong) NSString *title;
 @property (strong) NSString *subtitle;
 @property (strong) UIColor *heatColor;

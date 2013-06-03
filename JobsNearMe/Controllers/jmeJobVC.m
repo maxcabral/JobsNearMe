@@ -15,6 +15,8 @@
     IBOutlet UIBarButtonItem *forwardButton;
     IBOutlet UIBarButtonItem *reloadButton;
     Boolean hasBeenShown;
+    
+    IBOutlet UINavigationBar *navBar;
 }
 
 @end
@@ -36,6 +38,11 @@
     [super viewDidLoad];
     hasBeenShown = false;
     // Do any additional setup after loading the view.
+    
+    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
+        UIImage *image = [UIImage imageNamed:@"header"];
+        [navBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

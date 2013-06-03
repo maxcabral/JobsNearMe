@@ -15,6 +15,8 @@
     IBOutlet UITextField *skillField;
     IBOutlet UITableView *tView;
     NSMutableArray *_store;
+    
+    IBOutlet UINavigationBar *navBar;
 }
 @end
 
@@ -34,6 +36,10 @@
     [super viewDidLoad];
     
     _store = [[NSMutableArray alloc] init];
+    if ([navBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] ) {
+        UIImage *image = [UIImage imageNamed:@"header"];
+        [navBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
 }
 
 - (void)didReceiveMemoryWarning
